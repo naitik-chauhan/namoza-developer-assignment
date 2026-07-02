@@ -5,6 +5,8 @@
 **Contact:** naitikchauhan8218@gmail.com · +91 7895407387
 **GitHub:** [github.com/naitik-chauhan](https://github.com/naitik-chauhan)
 **LinkedIn:** [linkedin.com/in/naitik7895](https://linkedin.com/in/naitik7895)
+## Live Demo
+https://naitik-namoza-assignment.netlify.app
 
 ---
 
