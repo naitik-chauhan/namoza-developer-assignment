@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book your orthopaedic consultation at OrthoNow. Expert knee and back pain specialists across 9 clinics in Bengaluru, Hyderabad, and Chennai. Free consultation — book in 30 seconds.">
+    <meta name="theme-color" content="#0B5E68">
+    <!-- noindex: This is a paid campaign landing page — not intended for organic search indexing -->
+    <meta name="robots" content="noindex, nofollow">
+    <title>Book Your Orthopaedic Consultation | OrthoNow</title>
+
+    <style>
+    /* ============================================================
+       OrthoNow Landing Page — Inline Styles
+       Mobile-first responsive. System font stack for zero load time.
+       ============================================================ */
+
+    /* --- 1. Custom Properties --- */
+    :root {
+        --primary: #0B5E68;
+        --primary-dark: #094D55;
+        --primary-light: #E6F2F3;
+        --cta: #C75726;
+        --cta-hover: #A84920;
+        --text: #1B2735;
+        --text-muted: #5A6B7A;
+        --bg: #FFFFFF;
+        --bg-alt: #F5F7F9;
+        --border: #DDE3E8;
+        --error: #C62828;
+        --star: #E8A735;
+        /* System font stack — loads instantly, no FOUT, no network request */
+        --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        --radius: 8px;
+        --max-w: 720px;
+    }
+
+    /* --- 2. Reset --- */
+    *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        font-family: var(--font);
+        color: var(--text);
+        line-height: 1.6;
+        background: var(--bg);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* --- 3. Accessibility: Skip Link --- */
+    .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        font-size: 14px;
+    }
+    .skip-link:focus {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: auto;
+        height: auto;
+        padding: 12px 24px;
+        background: var(--primary);
+        color: #fff;
+        z-index: 9999;
+    }
+
+    /* --- 4. Layout --- */
+    .container {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* --- 5. Header (Sticky) ---
+       Stays visible on scroll so the phone number is always accessible.
+       Fixed height prevents CLS on scroll. */
+    .header {
+        position: sticky;
+        top: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        z-index: 100;
+        padding: 14px 0;
+    }
+    .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logo {
+        font-size: 20px;
+        font-weight: 400;
+        color: var(--primary);
+        text-decoration: none;
+        letter-spacing: -0.3px;
+    }
+    .logo b {
+        font-weight: 800;
+    }
+    .header-cta {
+        font-size: 14px;
+        color: var(--bg);
+        text-decoration: none;
+        font-weight: 600;
+        background: var(--primary);
+        padding: 8px 14px;
+        border-radius: var(--radius);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: background 0.15s ease;
+    }
+    .header-cta:hover {
+        background: var(--primary-dark);
+    }
+
+    /* --- 6. Hero Section ---
+       Dark teal gradient. Form card is positioned here so it appears
+       above the fold on mobile (360x640 viewport). */
+    .hero {
+        background: linear-gradient(160deg, var(--primary-dark) 0%, var(--primary) 50%, #0A6A73 100%);
+        color: #FFFFFF;
+        padding: 28px 0 44px;
+        text-align: center;
+    }
+    .hero-badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.13);
+        padding: 5px 14px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 500;
+        margin-bottom: 14px;
+        color: rgba(255, 255, 255, 0.92);
+    }
+    .hero h1 {
+        font-size: 27px;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        letter-spacing: -0.5px;
+    }
+    .hero-sub {
+        font-size: 15px;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.88);
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    /* --- 7. Form Card ---
+       White card on teal hero — high contrast draws the eye to the form.
+       scroll-margin-top accounts for sticky header on anchor scroll. */
+    #form-area {
+        scroll-margin-top: 64px;
+    }
+    .form-card {
+        background: var(--bg);
+        border-radius: 12px;
+        padding: 24px 22px;
+        margin-top: 24px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16);
+        text-align: left;
+    }
+    .form-title {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 18px;
+        text-align: center;
+    }
+
+    /* --- 8. Form Fields --- */
+    .form-field {
+        margin-bottom: 14px;
+    }
+    .form-field label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 5px;
+    }
+    /* Shared input styles */
+    .form-input {
+        width: 100%;
+        padding: 13px 14px;
+        border: 2px solid var(--border);
+        border-radius: var(--radius);
+        /* 16px prevents iOS Safari auto-zoom on input focus */
+        font-size: 16px;
+        font-family: var(--font);
+        color: var(--text);
+        background: var(--bg);
+        transition: border-color 0.15s ease;
+        outline: none;
+    }
+    .form-input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(11, 94, 104, 0.1);
+    }
+    .form-input.input-error {
+        border-color: var(--error);
+    }
+
+    /* Phone field: wrapper holds the +91 prefix and input as a single unit */
+    .phone-wrapper {
+        display: flex;
+        border: 2px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        transition: border-color 0.15s ease;
+    }
+    .phone-wrapper:focus-within {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(11, 94, 104, 0.1);
+    }
+    .phone-wrapper.input-error {
+        border-color: var(--error);
+    }
+    .phone-prefix {
+        display: flex;
+        align-items: center;
+        padding: 0 11px;
+        background: var(--bg-alt);
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-muted);
+        border-right: 2px solid var(--border);
+        user-select: none;
+    }
+    /* Override shared input styles inside phone wrapper — wrapper handles the border */
+    .phone-wrapper .form-input {
+        border: none;
+        border-radius: 0;
+    }
+    .phone-wrapper .form-input:focus {
+        box-shadow: none;
+    }
+
+    /* Select dropdown — styled to match text inputs */
+    .form-select {
+        width: 100%;
+        padding: 13px 14px;
+        border: 2px solid var(--border);
+        border-radius: var(--radius);
+        font-size: 16px;
+        font-family: var(--font);
+        color: var(--text);
+        background: var(--bg);
+        transition: border-color 0.15s ease;
+        outline: none;
+        cursor: pointer;
+        /* Native arrow — no custom SVG needed, keeps page self-contained */
+        appearance: auto;
+    }
+    .form-select:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(11, 94, 104, 0.1);
+    }
+    .form-select.input-error {
+        border-color: var(--error);
+    }
+    /* Placeholder option styling (muted color for "Select clinic..." text) */
+    .form-select option[value=""] {
+        color: var(--text-muted);
+    }
+
+    /* Validation error message */
+    .error-msg {
+        display: block;
+        font-size: 12px;
+        color: var(--error);
+        margin-top: 4px;
+        min-height: 0;
+    }
+
+    /* --- 9. CTA Button --- */
+    .cta-btn {
+        display: block;
+        width: 100%;
+        padding: 15px 24px;
+        background: var(--cta);
+        color: #FFFFFF;
+        border: 2px solid var(--cta);
+        border-radius: var(--radius);
+        font-size: 16px;
+        font-weight: 700;
+        font-family: var(--font);
+        cursor: pointer;
+        transition: background 0.15s ease, box-shadow 0.15s ease;
+        text-align: center;
+        text-decoration: none;
+        letter-spacing: 0.2px;
+        margin-top: 4px;
+    }
+    .cta-btn:hover {
+        background: var(--cta-hover);
+        border-color: var(--cta-hover);
+        box-shadow: 0 4px 14px rgba(199, 87, 38, 0.25);
+    }
+    .cta-btn:focus-visible {
+        outline: 3px solid var(--primary);
+        outline-offset: 2px;
+    }
+    .cta-btn:active {
+        transform: translateY(1px);
+    }
+
+    /* Outline variant for the bottom CTA (scrolls to form) */
+    .cta-btn-outline {
+        display: inline-block;
+        width: auto;
+        background: transparent;
+        border: 2px solid #FFFFFF;
+        color: #FFFFFF;
+        padding: 13px 32px;
+    }
+    .cta-btn-outline:hover {
+        background: #FFFFFF;
+        color: var(--primary);
+        border-color: #FFFFFF;
+        box-shadow: none;
+    }
+
+    .form-disclaimer {
+        text-align: center;
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-top: 12px;
+    }
+
+    /* --- 10. Thank-You State ---
+       Replaces the form card after successful submission.
+       No page reload — just a DOM swap. */
+    .thank-you {
+        text-align: center;
+    }
+    .thank-you-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: var(--primary);
+        color: #FFFFFF;
+        font-size: 26px;
+        line-height: 52px;
+        margin: 0 auto 14px;
+    }
+    .thank-you h2 {
+        font-size: 20px;
+        color: var(--text);
+        margin-bottom: 6px;
+    }
+    .thank-you p {
+        font-size: 14px;
+        color: var(--text-muted);
+    }
+    .thank-you-detail {
+        font-size: 14px;
+        color: var(--text);
+        background: var(--bg-alt);
+        padding: 14px;
+        border-radius: var(--radius);
+        margin-top: 14px;
+        line-height: 1.6;
+    }
+
+    /* --- 11. Trust Statistics Bar --- */
+    .trust {
+        background: var(--bg-alt);
+        padding: 24px 0;
+        border-bottom: 1px solid var(--border);
+    }
+    .trust-grid {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+    .trust-item {
+        flex: 1;
+        padding: 0 8px;
+    }
+    .trust-item + .trust-item {
+        border-left: 1px solid var(--border);
+    }
+    .trust-number {
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--primary);
+        line-height: 1.1;
+    }
+    .trust-label {
+        font-size: 11px;
+        color: var(--text-muted);
+        margin-top: 3px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        font-weight: 600;
+    }
+
+    /* --- 12. Credentials One-Liner --- */
+    .credentials {
+        text-align: center;
+        padding: 14px 20px;
+        font-size: 13px;
+        color: var(--text-muted);
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        line-height: 1.7;
+    }
+
+    /* --- 13. Testimonials --- */
+    .testimonials {
+        padding: 40px 0;
+        background: var(--bg);
+    }
+    .testimonials h2 {
+        text-align: center;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--text);
+    }
+    .testimonial {
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 14px;
+    }
+    .testimonial-stars {
+        color: var(--star);
+        font-size: 14px;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+    .testimonial-text {
+        font-size: 14px;
+        line-height: 1.65;
+        color: var(--text);
+        margin-bottom: 12px;
+        font-style: italic;
+    }
+    .testimonial-author cite {
+        font-weight: 700;
+        color: var(--text);
+        font-style: normal;
+        font-size: 14px;
+    }
+    .testimonial-author span {
+        display: block;
+        color: var(--text-muted);
+        font-size: 12px;
+        margin-top: 1px;
+    }
+
+    /* --- 14. Bottom CTA Section --- */
+    .bottom-cta {
+        background: linear-gradient(160deg, var(--primary-dark), var(--primary));
+        color: #FFFFFF;
+        text-align: center;
+        padding: 40px 20px;
+    }
+    .bottom-cta h2 {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+    .bottom-cta > .container > p {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.85);
+        margin-bottom: 20px;
+    }
+
+    /* --- 15. Footer --- */
+    .footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 12px;
+        color: var(--text-muted);
+        border-top: 1px solid var(--border);
+        line-height: 1.7;
+    }
+
+    /* --- 16. Desktop Overrides (768px+) --- */
+    @media (min-width: 768px) {
+        .hero {
+            padding: 48px 0 60px;
+        }
+        .hero h1 {
+            font-size: 38px;
+        }
+        .hero-sub {
+            font-size: 17px;
+        }
+        .form-card {
+            padding: 28px;
+            max-width: 420px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .trust-number {
+            font-size: 30px;
+        }
+        .trust-label {
+            font-size: 12px;
+        }
+        .testimonials h2 {
+            font-size: 26px;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .testimonial {
+            margin-bottom: 0;
+        }
+        .bottom-cta h2 {
+            font-size: 28px;
+        }
+    }
+
+    /* --- 17. Accessibility: Reduced Motion --- */
+    @media (prefers-reduced-motion: reduce) {
+        html {
+            scroll-behavior: auto;
+        }
+        *, *::before, *::after {
+            transition: none !important;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <!-- Accessibility: skip nav for keyboard/screen reader users -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- ===== Header ===== -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="/" class="logo" aria-label="OrthoNow Home">
+                Ortho<b>Now</b>
+            </a>
+            <a href="tel:+918048120000" class="header-cta" aria-label="Call OrthoNow at 080-4812-0000">
+                <span aria-hidden="true">&#9742;</span> Call Now
+            </a>
+        </div>
+    </header>
+
+    <!-- ===== Main Content ===== -->
+    <main id="main">
+
+        <!-- ===== Hero Section ===== -->
+        <section class="hero" aria-labelledby="hero-heading">
+            <div class="container">
+                <p class="hero-badge">&#10003; Trusted by 50,000+ patients across 3 cities</p>
+
+                <h1 id="hero-heading">Knee or Back Pain<br>Holding You Back?</h1>
+
+                <p class="hero-sub">
+                    See an orthopaedic specialist at OrthoNow &mdash; 9 clinics across
+                    Bengaluru, Hyderabad &amp; Chennai. No long waits. No referral needed.
+                </p>
+
+                <!-- Form Area: always-visible wrapper for anchor scrolling -->
+                <div id="form-area">
+
+                    <!-- Consultation Form -->
+                    <div class="form-card" id="form-container">
+                        <h2 class="form-title">Book Your Free Consultation</h2>
+
+                        <form id="consultation-form" novalidate aria-label="Consultation booking form">
+                            <!-- Name Field -->
+                            <div class="form-field">
+                                <label for="patient-name">Full Name</label>
+                                <input
+                                    type="text"
+                                    id="patient-name"
+                                    name="name"
+                                    class="form-input"
+                                    placeholder="e.g. Rahul Sharma"
+                                    required
+                                    aria-required="true"
+                                    autocomplete="name"
+                                    minlength="2"
+                                >
+                                <span class="error-msg" id="name-error" role="alert" aria-live="polite"></span>
+                            </div>
+
+                            <!-- Phone Field with +91 prefix -->
+                            <div class="form-field">
+                                <label for="patient-phone">Mobile Number</label>
+                                <div class="phone-wrapper" id="phone-wrapper">
+                                    <span class="phone-prefix" aria-hidden="true">+91</span>
+                                    <input
+                                        type="tel"
+                                        id="patient-phone"
+                                        name="phone"
+                                        class="form-input"
+                                        placeholder="10-digit mobile number"
+                                        required
+                                        aria-required="true"
+                                        autocomplete="tel-national"
+                                        maxlength="10"
+                                    >
+                                </div>
+                                <span class="error-msg" id="phone-error" role="alert" aria-live="polite"></span>
+                            </div>
+
+                            <!-- Clinic Preference Dropdown -->
+                            <div class="form-field">
+                                <label for="clinic-preference">Preferred Clinic</label>
+                                <select
+                                    id="clinic-preference"
+                                    name="clinic_preference"
+                                    class="form-select"
+                                    required
+                                    aria-required="true"
+                                >
+                                    <option value="" disabled selected>Select a clinic location</option>
+                                    <option value="Koramangala">Koramangala, Bengaluru</option>
+                                    <option value="Indiranagar">Indiranagar, Bengaluru</option>
+                                    <option value="Whitefield">Whitefield, Bengaluru</option>
+                                    <option value="Electronic City">Electronic City, Bengaluru</option>
+                                    <option value="HSR Layout">HSR Layout, Bengaluru</option>
+                                    <option value="Jubilee Hills">Jubilee Hills, Hyderabad</option>
+                                    <option value="Gachibowli">Gachibowli, Hyderabad</option>
+                                    <option value="Anna Nagar">Anna Nagar, Chennai</option>
+                                    <option value="T Nagar">T. Nagar, Chennai</option>
+                                </select>
+                                <span class="error-msg" id="clinic-error" role="alert" aria-live="polite"></span>
+                            </div>
+
+                            <!-- Primary CTA -->
+                            <button type="submit" class="cta-btn" id="submit-btn">
+                                Book My Consultation &rarr;
+                            </button>
+
+                            <p class="form-disclaimer">
+                                &#128274; No spam. Our team calls you within 30 minutes.
+                            </p>
+                        </form>
+                    </div>
+
+                    <!-- Thank-You State (hidden by default, shown after form submit) -->
+                    <div class="form-card thank-you" id="thank-you" style="display:none;" role="status" aria-live="polite">
+                        <div class="thank-you-icon" aria-hidden="true">&#10003;</div>
+                        <h2>Thank You, <span id="ty-name"></span>!</h2>
+                        <p>We&rsquo;ve received your consultation request.</p>
+                        <div class="thank-you-detail">
+                            Our orthopaedic specialist at <strong><span id="ty-clinic"></span></strong>
+                            will call you at <strong>+91 <span id="ty-phone"></span></strong>
+                            within 30 minutes to confirm your appointment.
+                        </div>
+                    </div>
+
+                </div><!-- /#form-area -->
+            </div>
+        </section>
+
+        <!-- ===== Trust Statistics ===== -->
+        <section class="trust" aria-label="OrthoNow key statistics">
+            <div class="container">
+                <div class="trust-grid">
+                    <div class="trust-item">
+                        <div class="trust-number">9</div>
+                        <div class="trust-label">Clinics</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-number">50,000+</div>
+                        <div class="trust-label">Patients Treated</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-number">15+</div>
+                        <div class="trust-label">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Credentials Bar ===== -->
+        <div class="credentials" aria-label="Clinic credentials">
+            NABH-Accredited Clinics &middot; Senior MS/DNB Orthopaedic Surgeons &middot; Same-Day Appointments
+        </div>
+
+        <!-- ===== Testimonials ===== -->
+        <section class="testimonials" aria-labelledby="testimonials-heading">
+            <div class="container">
+                <h2 id="testimonials-heading">What Our Patients Say</h2>
+
+                <div class="testimonial-grid">
+                    <!-- Testimonial 1 — Bengaluru, matches target persona -->
+                    <blockquote class="testimonial">
+                        <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="testimonial-text">
+                            &ldquo;I&rsquo;d been ignoring my knee pain for almost a year &mdash;
+                            work gets in the way. One visit to OrthoNow Koramangala and I had a
+                            clear diagnosis and treatment plan. Three months later, I&rsquo;m back
+                            to my morning runs.&rdquo;
+                        </p>
+                        <footer class="testimonial-author">
+                            <cite>Rajesh M.</cite>
+                            <span>Engineering Lead, Bengaluru</span>
+                        </footer>
+                    </blockquote>
+
+                    <!-- Testimonial 2 — Hyderabad, desk-job back pain persona -->
+                    <blockquote class="testimonial">
+                        <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="testimonial-text">
+                            &ldquo;Sitting 10 hours a day wrecked my lower back. Dr. Sharma at
+                            OrthoNow didn&rsquo;t just prescribe painkillers &mdash; she identified the
+                            root cause. The physio programme they put me on worked within weeks.&rdquo;
+                        </p>
+                        <footer class="testimonial-author">
+                            <cite>Priya S.</cite>
+                            <span>Product Manager, Hyderabad</span>
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Bottom CTA ===== -->
+        <section class="bottom-cta" aria-labelledby="bottom-cta-heading">
+            <div class="container">
+                <h2 id="bottom-cta-heading">Don&rsquo;t Let Pain Wait</h2>
+                <p>Book your consultation in 30 seconds. No fees. No commitment.</p>
+                <a href="#form-area" class="cta-btn cta-btn-outline" aria-label="Scroll to booking form">
+                    Book My Consultation &uarr;
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+        <p>&copy; 2026 OrthoNow Orthopaedic Clinics &middot; Bengaluru &middot; Hyderabad &middot; Chennai</p>
+        <p>This page is for informational purposes. OrthoNow is a fictional brand created for a developer assignment.</p>
+    </footer>
+
+    <!-- ===== JavaScript: Form Handling & GTM DataLayer ===== -->
+    <script>
+    /**
+     * OrthoNow Landing Page — Form Handler
+     *
+     * Responsibilities:
+     * 1. Validate Name and Phone fields with Indian mobile number format
+     * 2. Fire window.dataLayer.push() on successful submission
+     * 3. Show personalised thank-you state without page reload
+     *
+     * GTM Integration:
+     * - dataLayer is initialised before GTM container loads (standard practice)
+     * - Event 'consultation_form_submitted' fires ONLY on valid submission
+     * - Parameters: form_id, page_path, form_location
+     */
+    (function() {
+        'use strict';
+
+        // --- Initialise dataLayer ---
+        // This MUST exist before the GTM container snippet (which would go above this
+        // in production). The GTM snippet usually includes this line, but we set it
+        // defensively in case our script runs first.
+        window.dataLayer = window.dataLayer || [];
+
+        // --- DOM References ---
+        var form = document.getElementById('consultation-form');
+        var formContainer = document.getElementById('form-container');
+        var thankYou = document.getElementById('thank-you');
+        var nameInput = document.getElementById('patient-name');
+        var phoneInput = document.getElementById('patient-phone');
+        var phoneWrapper = document.getElementById('phone-wrapper');
+        var clinicSelect = document.getElementById('clinic-preference');
+        var nameError = document.getElementById('name-error');
+        var phoneError = document.getElementById('phone-error');
+        var clinicError = document.getElementById('clinic-error');
+
+        /**
+         * Validates an Indian mobile number.
+         * Rules: exactly 10 digits, must start with 6, 7, 8, or 9.
+         * Does NOT include country code — that's shown as a visual prefix.
+         *
+         * @param {string} phone - The raw phone string to validate
+         * @returns {boolean}
+         */
+        function isValidPhone(phone) {
+            return /^[6-9]\d{9}$/.test(phone);
+        }
+
+        /**
+         * Shows a validation error on a field.
+         * Sets aria-invalid for screen readers and adds visual error styling.
+         */
+        function showError(inputOrWrapper, errorEl, message) {
+            errorEl.textContent = message;
+            inputOrWrapper.classList.add('input-error');
+            // aria-invalid on the actual input (not the wrapper)
+            var input = inputOrWrapper.tagName === 'INPUT' ? inputOrWrapper : inputOrWrapper.querySelector('input');
+            if (input) input.setAttribute('aria-invalid', 'true');
+        }
+
+        /**
+         * Clears a validation error from a field.
+         */
+        function clearError(inputOrWrapper, errorEl) {
+            errorEl.textContent = '';
+            inputOrWrapper.classList.remove('input-error');
+            var input = inputOrWrapper.tagName === 'INPUT' ? inputOrWrapper : inputOrWrapper.querySelector('input');
+            if (input) input.removeAttribute('aria-invalid');
+        }
+
+        // --- Real-Time Validation (clear errors as user types) ---
+        nameInput.addEventListener('input', function() {
+            if (nameInput.value.trim().length >= 2) {
+                clearError(nameInput, nameError);
+            }
+        });
+
+        phoneInput.addEventListener('input', function() {
+            // Strip non-digits — user may paste a formatted number
+            phoneInput.value = phoneInput.value.replace(/\D/g, '');
+            if (isValidPhone(phoneInput.value)) {
+                clearError(phoneWrapper, phoneError);
+            }
+        });
+
+        clinicSelect.addEventListener('change', function() {
+            if (clinicSelect.value) {
+                clearError(clinicSelect, clinicError);
+            }
+        });
+
+        // --- Form Submission ---
+        form.addEventListener('submit', function(e) {
+            // Prevent page reload — thank-you state is shown via DOM manipulation
+            e.preventDefault();
+
+            var name = nameInput.value.trim();
+            var phone = phoneInput.value.trim();
+            var isValid = true;
+
+            // Validate: Name (minimum 2 characters)
+            if (name.length < 2) {
+                showError(nameInput, nameError, 'Please enter your full name.');
+                isValid = false;
+            } else {
+                clearError(nameInput, nameError);
+            }
+
+            // Validate: Phone (Indian mobile, 10 digits, starts with 6-9)
+            if (!isValidPhone(phone)) {
+                showError(phoneWrapper, phoneError, 'Please enter a valid 10-digit mobile number.');
+                isValid = false;
+            } else {
+                clearError(phoneWrapper, phoneError);
+            }
+
+            // Validate: Clinic preference (must select a clinic)
+            var clinic = clinicSelect.value;
+            if (!clinic) {
+                showError(clinicSelect, clinicError, 'Please select a preferred clinic.');
+                isValid = false;
+            } else {
+                clearError(clinicSelect, clinicError);
+            }
+
+            if (!isValid) return;
+
+            // === GTM dataLayer Push ===
+            // This fires ONLY on successful validation (not on page load, not on
+            // failed validation). In GTM, create a Custom Event trigger for
+            // 'consultation_form_submitted' to forward this to GA4.
+            //
+            // Parameters:
+            //   form_id           — identifies this specific form (for pages with multiple forms)
+            //   page_path         — which page the submission came from (LP attribution)
+            //   form_location     — where on the page the form is (hero vs. footer vs. modal)
+            //   clinic_preference — selected clinic location (feeds GA4 clinic-level reporting)
+            window.dataLayer.push({
+                'event': 'consultation_form_submitted',
+                'form_id': 'hero_consultation_form',
+                'page_path': window.location.pathname,
+                'form_location': 'hero_section',
+                'clinic_preference': clinic
+            });
+
+            // === Show Thank-You State ===
+            // Personalise with first name, phone, and clinic for confirmation UX.
+            // First name only — feels friendlier than full name.
+            var firstName = name.split(' ')[0];
+            document.getElementById('ty-name').textContent = firstName;
+            document.getElementById('ty-phone').textContent = phone;
+            document.getElementById('ty-clinic').textContent = clinic;
+
+            formContainer.style.display = 'none';
+            thankYou.style.display = 'block';
+
+            // Scroll thank-you into view — important on mobile where the form may
+            // have been partially below the fold
+            thankYou.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    })();
+    </script>
+</body>
+</html>
