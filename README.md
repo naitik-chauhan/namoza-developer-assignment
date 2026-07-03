@@ -8,6 +8,12 @@
 ## Live Demo
 https://naitik-namoza-assignment.netlify.app
 
+## GitHub Repository
+https://github.com/naitik-chauhan/namoza-developer-assignment
+
+## Loom Walkthrough
+https://www.loom.com/share/ced4e20f6d504afc98bf00346a747c07
+
 ---
 
 ## 1. Project Overview
